@@ -57,8 +57,7 @@ A atualização do Spack e instalação de pacotes são feitas no diretório cen
 
 <br>
 
-#################################################################################################################
-
+#########################################################################################
 
 - 👋 Hi, I'm @boivoador
 - 👀 I'm interested in high-performance computing (HPC), clusters, automation, and optimization of scientific processes.
