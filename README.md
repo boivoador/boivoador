@@ -14,7 +14,7 @@ Para dúvidas ou suporte técnico, entre em contato com a equipe de administraç
 <h2>Sistema Operacional</h2>
 Ubuntu Server 22.04 LTS
 
-<br>
+<br><br>
 
 <h2>Montagem do NFS</h2>
 O diretório <strong>/data</strong> é montado em todos os nós do cluster a partir do servidor de controle <strong>boivoador0</strong>.
@@ -23,14 +23,14 @@ Estrutura do diretório <strong>/data</strong>:
 
 ![image](https://github.com/user-attachments/assets/224db0ee-039c-4958-98b2-e70a67ebef46)
 
-<br>
+<br><br>
 
 <h2>Diretório /data/apps</h2>
 Onde estão armazenados as aplicações e ferramentas centralizadas.
 <br>
 <i><strong>Ex.: /data/apps/spack</strong></i>
 
-<br>
+<br><br>
 
 <h2>Diretório /data/home</h2>
 <p>Onde estão os home directories dos usuários, centralizados no NFS.</p>
@@ -39,12 +39,12 @@ Cada usuário teria algo como:
 1. /data/home/usuario1
 2. /data/home/usuario2
 
-<br>
+<br><br>
 
 <h2>Diretório /data/lost+found</h2>
 Esse diretório é criado automaticamente pelo sistema de arquivos (provavelmente ext4, xfs, etc). Ele serve para armazenar fragmentos de arquivos recuperados em caso de falha no disco ou no sistema de arquivos.
 
-<br>
+<br><br>
 
 <h2>Configuração Centralizada do Spack no Cluster</h2>
 
@@ -52,8 +52,10 @@ Esse diretório é criado automaticamente pelo sistema de arquivos (provavelment
 O Spack está configurado de forma centralizada em um diretório NFS montado em todos os nós do cluster. Isso garante que todos os usuários tenham acesso à mesma instalação, facilitando a gestão dos pacotes e módulos.
 3. Instalação de pacotes <br>
 A atualização do Spack e instalação de pacotes são feitas no diretório central <strong>/data/apps/spack</strong> por usuários autorizados.
-<br>
+
 ![image](https://github.com/user-attachments/assets/055b0094-3112-4fb9-bae4-5139879897a0)
+
+<br>
 
 #################################################################################################################
 
