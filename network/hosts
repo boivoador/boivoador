@@ -1,0 +1,16 @@
+127.0.0.1       localhost
+150.161.151.4   boivoador0 boivoador0.class.BoiVoador0.ufpe.br
+192.168.100.15  boivoador0-int slurmdbd
+192.168.100.13  boivoador1
+192.168.100.12  boivoador2
+192.168.100.14  boivoador3
+192.168.100.11  boivoador4
+192.168.100.9   boivoador5
+192.168.100.10  boivoador6
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
