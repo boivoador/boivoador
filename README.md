@@ -2,7 +2,6 @@
 - 👀 Estou interessado em computação de alto desempenho (HPC), clusters, automação e otimização de processos científicos.
 - 🌱 Atualmente estou aprendendo mais sobre gerenciamento de clusters, monitoramento de desempenho e segurança em ambientes HPC.
 - 💞️ Estou buscando colaborar em projetos relacionados à infraestrutura de TI, computação científica e desenvolvimento de ferramentas para clusters.
-- 📫 Como entrar em contato: hpc.propesqi@ufpe.br
 - ⚡ Curiosidade: Nosso cluster foi batizado de **Boi Voador** em homenagem ao folclore do boi voador de Pernambuco que remete à história do
 - governador Maurício de Nassau, que, durante a ocupação holandesa, teria prometido fazer um boi voar sobre a ponte de Recife para atrair
 - visitantes e impulsionar a receita do pedágio.
@@ -11,6 +10,9 @@
 📞 Contato
 Para dúvidas ou suporte técnico, entre em contato com a equipe de administração do cluster:
 📧 hpc.propesqi@ufpe.br
+
+![image](https://github.com/user-attachments/assets/055b0094-3112-4fb9-bae4-5139879897a0)
+
 
 
 #################################################################################################################
