@@ -1,0 +1,2 @@
+mirrors:
+  local_mirror: file:///data/apps/spack_mirror

@@ -1,0 +1,22 @@
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    eno1:
+      dhcp4: true
+    eno2:
+      dhcp4: true
+    ens3f0:
+      critical: true
+      dhcp-identifier: mac
+      dhcp4: true
+      nameservers:
+        addresses:
+        - 8.8.8.8
+        - 8.8.4.4
+    ens3f1:
+      dhcp4: true
+    ib1:
+      addresses:
+        - 192.168.100.15/24
+      mtu: 65520
+  version: 2
