@@ -1,74 +1,95 @@
-- 👋 Olá, eu sou o @boivoador
-- 👀 Estou interessado em computação de alto desempenho (HPC), clusters, automação e otimização de processos científicos.
-- 🌱 Atualmente estou aprendendo mais sobre gerenciamento de clusters, monitoramento de desempenho e segurança em ambientes HPC.
-- 💞️ Estou buscando colaborar em projetos relacionados à infraestrutura de TI, computação científica e desenvolvimento de ferramentas para clusters.
-- ⚡ Curiosidade: Nosso cluster foi batizado de **Boi Voador** em homenagem ao folclore do boi voador de Pernambuco que remete à história do
-- governador Maurício de Nassau, que, durante a ocupação holandesa, teria prometido fazer um boi voar sobre a ponte de Recife para atrair
-- visitantes e impulsionar a receita do pedágio.
+# Boi Voador — Cluster HPC da UFPE / UFPE HPC Cluster
 
+🇧🇷 [Português](#português) · 🇬🇧 [English](#english)
 
-📞 Contato
-Para dúvidas ou suporte técnico, entre em contato com a equipe de administração do cluster:
-📧 hpc.propesqi@ufpe.br
-<br><br>
-<h2>Sistema Operacional</h2>
-Ubuntu Server 22.04 LTS
+---
 
-<br><br>
+## Português
 
-<h2>Montagem do NFS</h2>
-O diretório <strong>/data</strong> é montado em todos os nós do cluster a partir do servidor de controle <strong>boivoador0</strong>.
-Estrutura do diretório <strong>/data</strong>:
-<br>
+O **Boi Voador** é o cluster de computação de alto desempenho (HPC) da UFPE, usado para pesquisa científica. O nome homenageia o folclore pernambucano do boi voador: durante a ocupação holandesa, o governador Maurício de Nassau teria prometido fazer um boi voar sobre a ponte do Recife para atrair visitantes e aumentar a arrecadação do pedágio.
 
-![image](https://github.com/user-attachments/assets/224db0ee-039c-4958-98b2-e70a67ebef46)
+### Resumo do cluster
 
-<br><br>
+| | |
+|---|---|
+| Nó de login | `boivoador0` (`150.161.151.10`) |
+| Nós de computação | 9: 8 de CPU (`boivoador1–8`) e 1 de GPU (`boivoador9`) |
+| Total | 928 núcleos físicos, 1.344 CPUs no Slurm, ~13 TiB de RAM, 3× NVIDIA L40S |
+| Sistema operacional | Ubuntu Server 22.04 LTS |
+| Escalonador | Slurm 24.05 |
+| Software | Spack + Environment Modules (GCC 11.4, OpenMPI 5, Python 3.13, R 4.5, …) |
+| Armazenamento | `/mnt/storage` (NFS), compartilhado por todos os nós |
 
-<h2>Diretório /data/apps</h2>
-Onde estão armazenados as aplicações e ferramentas centralizadas.
-<br>
-<i><strong>Ex.: /data/apps/spack</strong></i>
+### Início rápido
 
-<br><br>
+```bash
+ssh nome.sobrenome@boivoador0            # 1. entre no nó de login
+passwd                                    # 2. troque a senha temporária
+curl -O https://raw.githubusercontent.com/boivoador/boivoador/main/examples/01-serial.sbatch   # 3. baixe um exemplo
+nano 01-serial.sbatch                     # 4. ajuste o programa e os recursos
+sbatch 01-serial.sbatch                   # 5. submeta
+squeue --me                               # 6. acompanhe
+```
 
-<h2>Diretório /data/home</h2>
-<p>Onde estão os home directories dos usuários, centralizados no NFS.</p>
+### Documentação
 
-Cada usuário teria algo como:
-1. /data/home/usuario1
-2. /data/home/usuario2
+| | |
+|---|---|
+| [Acesso e login](docs/pt/01-acesso.md) | SSH, senha, regras do nó de login |
+| [Hardware](docs/pt/02-hardware.md) | Nós, CPUs, memória, GPUs, rede |
+| [Slurm](docs/pt/03-slurm.md) | Partições, limites, memória, GPU, comandos |
+| [Armazenamento](docs/pt/04-armazenamento.md) | Home, `/mnt/storage`, transferência de dados, backup |
+| [Software](docs/pt/05-software.md) | Spack, módulos, Python, R, CUDA |
+| [Perguntas frequentes](docs/pt/06-faq.md) | Problemas comuns e soluções |
+| [Boas práticas](docs/pt/07-boas-praticas.md) | Como usar o cluster sem atrapalhar os outros |
+| [Scripts de exemplo](examples/README.md) | Jobs prontos: serial, MPI, GPU, arrays, Python, R |
 
-<br><br>
+### Contato
 
-<h2>Diretório /data/lost+found</h2>
-Esse diretório é criado automaticamente pelo sistema de arquivos (provavelmente ext4, xfs, etc). Ele serve para armazenar fragmentos de arquivos recuperados em caso de falha no disco ou no sistema de arquivos.
+Dúvidas, criação de conta ou suporte técnico: 📧 **hpc.propesqi@ufpe.br**
 
-<br><br>
+---
 
-<h2>Configuração Centralizada do Spack no Cluster</h2>
+## English
 
-1. Visão Geral <br>
-O Spack está configurado de forma centralizada em um diretório NFS montado em todos os nós do cluster. Isso garante que todos os usuários tenham acesso à mesma instalação, facilitando a gestão dos pacotes e módulos.
-3. Instalação de pacotes <br>
-A atualização do Spack e instalação de pacotes são feitas no diretório central <strong>/data/apps/spack</strong> por usuários autorizados.
+**Boi Voador** is UFPE's high-performance computing (HPC) cluster for scientific research. It is named after the flying-ox folklore of Pernambuco: during the Dutch occupation, Governor Maurício de Nassau supposedly promised to make an ox fly over the Recife bridge to attract visitors and boost toll revenue.
 
-![image](https://github.com/user-attachments/assets/055b0094-3112-4fb9-bae4-5139879897a0)
+### Cluster at a glance
 
-<br>
+| | |
+|---|---|
+| Login node | `boivoador0` (`150.161.151.10`) |
+| Compute nodes | 9: 8 CPU nodes (`boivoador1–8`) and 1 GPU node (`boivoador9`) |
+| Total | 928 physical cores, 1,344 Slurm CPUs, ~13 TiB RAM, 3× NVIDIA L40S |
+| Operating system | Ubuntu Server 22.04 LTS |
+| Scheduler | Slurm 24.05 |
+| Software | Spack + Environment Modules (GCC 11.4, OpenMPI 5, Python 3.13, R 4.5, …) |
+| Storage | `/mnt/storage` (NFS), shared by every node |
 
-#########################################################################################
+### Quick start
 
-- 👋 Hi, I'm @boivoador
-- 👀 I'm interested in high-performance computing (HPC), clusters, automation, and optimization of scientific processes.
-- 🌱 I'm currently learning more about cluster management, performance monitoring, and security in HPC environments.
-- 💞️ I'm looking to collaborate on projects related to IT infrastructure, scientific computing, and development of tools for clusters.
-- 📫 How to get in touch: hpc.propesqi@ufpe.br
-- ⚡ Fun fact: Our cluster was named **Boi Voador** in honor of the folklore of the flying ox of Pernambuco that refers to the story of
-- Governor Maurício de Nassau, who, during the Dutch occupation, promised to make an ox fly over the Recife bridge to attract
-- visitors and boost toll revenue.
+```bash
+ssh firstname.lastname@boivoador0         # 1. log in
+passwd                                    # 2. change your temporary password
+curl -O https://raw.githubusercontent.com/boivoador/boivoador/main/examples/01-serial.sbatch   # 3. download an example
+nano 01-serial.sbatch                     # 4. adjust program and resources
+sbatch 01-serial.sbatch                   # 5. submit it
+squeue --me                               # 6. watch it
+```
 
+### Documentation
 
-📞 Contact
-For questions or technical support, please contact the cluster administration team:
-📧 hpc.propesqi@ufpe.br
+| | |
+|---|---|
+| [Access and login](docs/en/01-access.md) | SSH, password, login-node rules |
+| [Hardware](docs/en/02-hardware.md) | Nodes, CPUs, memory, GPUs, network |
+| [Slurm](docs/en/03-slurm.md) | Partitions, limits, memory, GPU, commands |
+| [Storage](docs/en/04-storage.md) | Home, `/mnt/storage`, data transfer, backups |
+| [Software](docs/en/05-software.md) | Spack, modules, Python, R, CUDA |
+| [FAQ](docs/en/06-faq.md) | Common problems and fixes |
+| [Good practices](docs/en/07-good-practices.md) | Using the cluster without getting in others' way |
+| [Example scripts](examples/README.md) | Ready-made jobs: serial, MPI, GPU, arrays, Python, R |
+
+### Contact
+
+Questions, account requests or technical support: 📧 **hpc.propesqi@ufpe.br**
